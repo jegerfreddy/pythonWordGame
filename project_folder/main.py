@@ -52,12 +52,12 @@ def check_guess(correct_word: str, user_guess: str):
 print("      *** PyWord ***\n", "  --------------------\n", hidden_word, "\n")
 
 while not guessed_the_word:
-    guess: str = input("Guess the word: ")
+    guess: str = input("Guess a word: ")
 
     if guess == "/rules":
         print(
             "\nWhen you guess a word, lets say 'Cramp', a list of letters will show up like this:\n"
-            "(Correct word is CHAIR)\n"
+            "(*-Correct word is CHAIR-*)\n"
             "['C', 'r', 'A', '*', '*'].\n"
             "'Lowercase' = correct letter but wrong placement.\n"
             "'Uppercase' = correct letter AND correct placement.\n"
@@ -71,11 +71,11 @@ while not guessed_the_word:
 
         print("The word is: '", secret_word, f"' -- {message[::-1]}", "\n")
 
-    elif len(guess) < 6:
+    elif 6 > len(guess) > 0:
         hidden_word: [str] = check_guess(secret_word, guess)
 
         if not guessed_the_word:
             print(f"{hidden_word}\n")
 
     else:
-        print("Your guess can only contain up to 5 letters")
+        print("A guess must contain 1-5 letters.            ...Unless you're typing a command...")
